@@ -1,10 +1,15 @@
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
+import dns from 'dns';
+
 import User from '../models/User.js';
 import Category from '../models/Category.js';
 import Product from '../models/Product.js';
 
 dotenv.config();
+dns.setServers(['8.8.8.8', '8.8.4.4']);
+
+
 
 const categories = [
     {
@@ -519,7 +524,7 @@ const products = [
 const seedDatabase = async () => {
     try {
         // Connect to MongoDB
-        await mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/novashop');
+        await mongoose.connect('mongodb+srv://novashop:NovaShop27@cluster0.txu6qv4.mongodb.net/novashop?retryWrites=true&w=majority&appName=Cluster0');
         console.log('✅ Connected to MongoDB');
 
         // Clear existing data
